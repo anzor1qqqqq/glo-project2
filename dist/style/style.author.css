@@ -1,0 +1,32 @@
+.timer-numbers {
+    display: flex;
+    justify-content: center;
+    width: 70%;
+    margin: auto;
+    align-items: center;
+}
+
+.content_time {
+    margin-top: 20px;
+}
+
+.content_time {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.content_time:not(:last-child) {
+    margin-right: 50px;
+}
+
+.content_time:not(:last-child)::after {
+    content: ':';
+    position: absolute;
+    left: 85px;
+    top: 20px;
+}
+ 
+.name_setting {
+    font-size: 15px;
+}

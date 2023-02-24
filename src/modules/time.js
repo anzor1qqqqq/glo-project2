@@ -38,6 +38,7 @@ const timer = (dateUserDeadline) => {
             }
         }, 1000);
     };
+    
     createTimer();
 };
 

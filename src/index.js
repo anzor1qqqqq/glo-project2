@@ -1,7 +1,9 @@
 'use strict';
 
 import time from './modules/time';
-import two from './modules/two';
+import menu from './modules/menu';
+import modal from './modules/modal';
 
 time('1 march 2023');
-two();
+menu();
+modal();

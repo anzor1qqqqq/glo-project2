@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 const openModal = () => {
     const popupBtn = document.querySelectorAll('.popup-btn');

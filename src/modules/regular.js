@@ -18,7 +18,7 @@ const checkRegExp = () => {
 
     emailInput.forEach(item => {
         item.addEventListener('input', elem => {
-            elem.target.value = elem.target.value.replace(/[^\a-zA-Z?\.?\-?\_?\!?\~?\*?\'?\@]+$/g, '')
+            elem.target.value = elem.target.value.replace(/[^\a-zA-Z0-9?\.?\-?\_?\!?\~?\*?\'?\@]+$/g, '')
         });
     });
 

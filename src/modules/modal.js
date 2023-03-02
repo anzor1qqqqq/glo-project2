@@ -18,14 +18,12 @@ const openModal = () => {
         item.addEventListener('click', () => {
             popup.style.display = 'flex';
 
-            if (window.screen.width > 768) {
-                a();
-            };
+            if (window.screen.width > 768) a();
 
             function a() {
                 let b = requestAnimationFrame(a);
                 counter += 4;
-                popupContent.style.left = counter+'%'
+                popupContent.style.left = counter+'%';
 
                 if (counter === 40) cancelAnimationFrame(b);
             };
@@ -38,10 +36,8 @@ const openModal = () => {
         });
     });
 
-    popupClose.addEventListener('click', closeModal);
-
     popup.addEventListener('click', event => {
-        if (event.target.classList.contains('popup')) closeModal();
+        if (event.target.classList.contains('popup') || event.target.classList.contains('popup-close')) closeModal();
     });
 };
 

@@ -1,17 +1,15 @@
 'use strict';
 
 const CreateMenu = () => {
-    const menuBtn = document.querySelector('.menu');
     const menu = document.querySelector('menu');
-    const closeBtn = document.querySelectorAll('.close-modal');
 
-    let handleMenu = () => {
+    const handleMenu = () => {
         menu.classList.toggle('active-menu');
     };
 
     document.querySelectorAll('a').forEach(elem => {
         elem.addEventListener('click', event => {
-            if (elem.getAttribute('href')) {
+            if (elem.getAttribute('href') && !event.target.classList.contains('close-btn')) {
                 event.preventDefault();
                 const id = elem.getAttribute('href');
 
@@ -23,8 +21,10 @@ const CreateMenu = () => {
         });
     });
 
-    closeBtn.forEach(elem => elem.addEventListener('click', handleMenu));
-    menuBtn.addEventListener('click', handleMenu);
+    document.addEventListener('click', event => {
+        if (event.target.classList.contains('close-modal')) handleMenu();
+        if (event.target.classList.contains('menu') || event.target.closest('.menu')) handleMenu();
+    });
 };
 
 export default CreateMenu; 

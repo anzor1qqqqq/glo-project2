@@ -129,12 +129,12 @@
 		<h2>Наши услуги</h2>
 		<div class="underline"></div>
 		<div class="row service-header">
-			<div class="col-12 col-lg-4 service-header-tab active">Дизайн <span>интерьера</span></div>
-			<div class="col-12 col-lg-4 service-header-tab">Дизайн <span>экстерьера</span></div>
-			<div class="col-12 col-lg-4 service-header-tab">Визуальная <span>анимация</span></div>
+			<div class="col-12 col-lg-4 service-header-tab active" data-tab="#interior">Дизайн <span>интерьера</span></div>
+			<div class="col-12 col-lg-4 service-header-tab" data-tab="#exterior">Дизайн <span>экстерьера</span></div>
+			<div class="col-12 col-lg-4 service-header-tab" data-tab="#animation">Визуальная <span>анимация</span></div>
 		</div>
 
-		<div class="service-tab row">
+		<div class="service-tab row" id="interior">
 			<div class="service-outer col-md-6 col-sm-6 col-12">
 				<div class="service-inner">
 					<div class="service-text">
@@ -150,7 +150,7 @@
 		</div>
 
 
-		<div class="service-tab row">
+		<div class="service-tab row d-none" id="exterior">
 			<div class="col-md-6 col-sm-6">
 				<img src="images/service/service-2.png" alt="">
 			</div>
@@ -166,7 +166,7 @@
 		</div>
 
 
-		<div class="service-tab row">
+		<div class="service-tab row d-none" id="animation">
 			<div class="service-outer col-md-6 col-sm-6 col-12">
 				<div class="service-inner">
 					<p>Услуга, направленная на разработку дизайна с анимацией, дизайн интерьера и экстерьера</p>

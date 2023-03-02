@@ -22,8 +22,12 @@ const CreateMenu = () => {
     });
 
     document.addEventListener('click', event => {
-        if (event.target.classList.contains('close-modal')) handleMenu();
-        if (event.target.classList.contains('menu') || event.target.closest('.menu')) handleMenu();
+        if (event.target.closest('.active-menu')) {
+            if (event.target.classList.contains('close-modal')) handleMenu();
+            if (event.target.classList.contains('menu') || event.target.closest('.menu')) handleMenu();
+        } else {
+            handleMenu();
+        };
     });
 };
 

@@ -22,13 +22,12 @@ const CreateMenu = () => {
     });
 
     document.addEventListener('click', event => {
-        if (event.target.closest('.active-menu')) {
+        if (menu.classList.contains('active-menu') && !event.target.closest('.active-menu')) {
+            handleMenu();
+        } else {
             if (event.target.classList.contains('close-modal')) handleMenu();
             if (event.target.classList.contains('menu') || event.target.closest('.menu')) handleMenu();
-        } else {
-            handleMenu();
         };
-        
     });
 };
 

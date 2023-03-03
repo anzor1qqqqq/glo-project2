@@ -2,16 +2,17 @@
 
 const CreateMenu = () => {
     const menu = document.querySelector('menu');
+    const listBtn = document.querySelectorAll('.list_btn');
 
     const handleMenu = () => {
         menu.classList.toggle('active-menu');
     };
 
-    document.querySelectorAll('a').forEach(elem => {
+    listBtn.forEach(elem => {
         elem.addEventListener('click', event => {
-            if (elem.getAttribute('href') && !event.target.classList.contains('close-btn')) {
+            if (event.target.getAttribute('href') && event.target.classList.contains('close-modal')) {
                 event.preventDefault();
-                const id = elem.getAttribute('href');
+                const id = event.target.getAttribute('href');
 
                 document.querySelector(id).scrollIntoView({
                     behavior: 'smooth',

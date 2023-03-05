@@ -1,5 +1,7 @@
 'use strict';
 
+import {animate} from './helpers';
+
 const createCalc = (price = 100) => {
     const calcBlock = document.querySelector('.calc-block');
     const calcType = document.querySelector('.calc-type');
@@ -12,20 +14,20 @@ const createCalc = (price = 100) => {
     let quentRoom;
     let dayRealease;
     let tally;
-    let counter = 1;
-    let devider;
 
-    const fooAnimated = () => {
-        let fooStart = requestAnimationFrame(fooAnimated);
+    const fooAnimated = (a) => {
+        animate({
+            duration: 100,
 
-        if (counter <= tally) {
-            counter *= 2; 
-            total.textContent = counter;
-        } else {
-            total.textContent = tally;
-            cancelAnimationFrame(fooStart);
-        };
-    }; 
+            timing(timeFraction) {
+              return timeFraction;
+            },
+
+            draw(progress) {
+                total.textContent = parseInt(progress * a);
+            },
+        });
+    };
 
     const countCalc = () => {
         if (calcType.selectedIndex !== 0) {
@@ -43,15 +45,13 @@ const createCalc = (price = 100) => {
         };
 
         if (calcSquare.value !== '') {  
-            counter = 1;
-
             calcCount.style.opacity = 1;
             calcCount.style.borderColor = '#19b5fe';
             calcCount.disabled = false;
 
             tally = Math.ceil(typeInterior * calcSquare.value * price);
 
-            fooAnimated();
+            fooAnimated(tally)
         } else {
             calcCount.style.opacity = '';
             calcCount.style.borderColor = '';
@@ -62,7 +62,6 @@ const createCalc = (price = 100) => {
 
         if (calcCount.value !== '') {
             quentRoom = 1;
-
             calcCount.value > 1 ? quentRoom += calcCount.value / 10 : quentRoom = 1;
 
             calcDay.style.opacity = 1;
@@ -71,7 +70,7 @@ const createCalc = (price = 100) => {
 
             tally = Math.ceil(tally * quentRoom);
 
-            fooAnimated();
+            fooAnimated(tally)
         } else {
             calcDay.style.opacity = '';
             calcDay.style.borderColor = '';
@@ -80,13 +79,11 @@ const createCalc = (price = 100) => {
         };
 
         if (calcDay.value !== '') {
-
             calcDay.value < 5 ? dayRealease = 2 : calcDay.value < 10 ? dayRealease = 1.5 : dayRealease = 1;
 
             tally = Math.ceil(tally * dayRealease);
-            tally % 100 === 0 ? devider = 100 : tally % 50 === 0 ? devider = 50 : tally % 10 === 0 ? devider = 10 : devider = 2;
 
-            fooAnimated();
+            fooAnimated(tally)
         };
     };
 

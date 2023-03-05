@@ -1,9 +1,10 @@
 'use strict';
 
+import {animate} from './helpers';
+
 const openModal = () => {
     const popupBtn = document.querySelectorAll('.popup-btn');
     const popup = document.querySelector('.popup');
-    const popupClose = document.querySelector('.popup-close');
     const popupContent = document.querySelector('.popup-content');
 
     let counter = 0;
@@ -19,13 +20,19 @@ const openModal = () => {
             popup.style.display = 'flex';
 
             if (window.screen.width > 768) a();
-
+            
             function a() {
-                let b = requestAnimationFrame(a);
-                counter += 4;
-                popupContent.style.left = counter+'%';
+                animate({
+                    duration: 250,
 
-                if (counter === 40) cancelAnimationFrame(b);
+                    timing(timeFraction) {
+                      return timeFraction;
+                    },
+
+                    draw(progress) {
+                      popupContent.style.left = progress * 40 + '%';
+                    },
+                  });
             };
             
             document.body.style.overflowY = 'hidden';

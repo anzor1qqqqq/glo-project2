@@ -1,34 +1,47 @@
 'use strict';
 
 const getDb = () => {
-    const sendData = (obj, url) => {
+    let objDb;
+    let sendObj;
 
-        return fetch(url, {
-            method: 'POST',
+    const getData = (url, callback) => {
+        const request = new XMLHttpRequest;
+        request.open('GET', url);
+        request.send();
 
-            body: obj,
-
-            headers: {
-              'Content-type': 'application/json; charset=UTF-8',
-            },
-        }).then((respone) => respone.json()).then((obj) => console.log(obj)).catch(() => console.log('error'));
+        request.addEventListener('readystatechange', () => {
+            if (request.status === 200 && request.readyState === 4) {
+                let obj = JSON.parse(request.response);
+                callback(obj);
+            };
+        });
     };
 
-    const getData = () => {
-        const fet = fetch('../db.json');
-        let save;
+    const setData = (url, elem, callback) => {
+        const request = new XMLHttpRequest;
+        sendObj = JSON.stringify(elem);
 
-        function add(g) {
-            save = g;
-            console.log(save);
-        };
-    
-        fet.then((response) => response.json()).then((obj) => add(JSON.stringify(obj))).catch(() => console.log('error'));;
+        request.open('POST', url);
+        request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
 
-        sendData(save, 'https://jsonplaceholder.typicode.com/posts');
+        request.addEventListener('readystatechange', () => {
+            if (request.status > 300 && request.readyState === 4) {
+                console.error('error');
+            };
+        });
+
+        request.send(sendObj);
     };
 
-    getData();
+
+    const getObj = (obj1) => objDb = obj1;
+
+    const getObj2 = (obj2) => console.log(obj2);
+
+    getData('../db.json', getObj);
+    getData('https://jsonplaceholder.typicode.com/posts', getObj2);
+
+    setData('https://jsonplaceholder.typicode.com/posts', objDb);
 };
 
 export default getDb;

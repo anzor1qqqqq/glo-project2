@@ -7,6 +7,7 @@ import reg from './modules/regular';
 import tabs from './modules/tabs';
 import slider from './modules/slider';
 import calculated from './modules/calculated';
+import db from './modules/db-fetch';
 
 time('15 march 2023');
 menu();
@@ -15,3 +16,4 @@ reg();
 tabs();
 slider();
 calculated(100);
+db();

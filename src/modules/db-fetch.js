@@ -7,7 +7,7 @@ const createdbServ = (url, idForm, arrInfo = {}) => {
 
     const newElem = document.createElement('div');
     newElem.style.color = 'white';
-    
+
     const messageLoad = 'Закрузка...';
     const messageCompletLoad = 'Мы отпраили ваши данные, с вами свяжется наш менеджер';
     const messageErrorLoad = 'Ошибка';
@@ -77,5 +77,7 @@ const createdbServ = (url, idForm, arrInfo = {}) => {
         console.log(error.message);
     };
 };
+
+///ВАЛИДИЦИЮ ОФОРМИЛ В ФАЙЛЕ - regular
 
 export default createdbServ;

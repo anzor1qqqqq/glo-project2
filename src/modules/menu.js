@@ -3,6 +3,7 @@
 const CreateMenu = () => {
     const menu = document.querySelector('menu');
     const listBtn = document.querySelectorAll('.list_btn');
+    const swipe = document.querySelector('.swipe');
 
     const handleMenu = () => {
         menu.classList.toggle('active-menu');
@@ -20,6 +21,20 @@ const CreateMenu = () => {
                 });  
             };
         });
+    }); 
+
+    swipe.addEventListener('click', event => {
+        if (event.target.closest('.swipe')) {
+            event.preventDefault();
+            
+            let a = event.target.closest('.swipe')
+            const id = a.getAttribute('href');
+
+            document.querySelector(id).scrollIntoView({
+                behavior: 'smooth',
+                block: 'start',
+            });
+        };
     });
 
     document.addEventListener('click', event => {

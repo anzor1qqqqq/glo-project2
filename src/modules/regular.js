@@ -5,6 +5,7 @@ const checkRegExp = () => {
     const messInput = document.querySelector('.mess');
     const emailInput = document.querySelectorAll('[type="email"]');
     const telInput = document.querySelectorAll('[type="tel"]');
+    const formName = document.querySelectorAll('[name="user_name"]');
 
     calcItem.forEach(item => {
         item.addEventListener('input', elem => {
@@ -13,7 +14,7 @@ const checkRegExp = () => {
     });
 
     messInput.addEventListener('input', elem => {
-        elem.target.value = elem.target.value.replace(/[^\а-яА-Я\-?\s]+$/g, '')
+        elem.target.value = elem.target.value.replace(/[^\а-яА-Я\-\,\:\.\s\d]+$/g, '')
     });
 
     emailInput.forEach(item => {
@@ -24,8 +25,14 @@ const checkRegExp = () => {
 
     telInput.forEach(item => {
         item.addEventListener('input', elem => {
-            elem.target.value = elem.target.value.replace(/[^\d\-\()]+/g, '');
+            elem.target.value = elem.target.value.replace(/[^\d\-\()\+]+/g, '');
         });
+    });
+
+    formName.forEach((item) => {
+        item.addEventListener('input', elem => {
+            elem.target.value = elem.target.value.replace(/[^\а-яА-Я\s]+/g, '');
+        }); 
     });
 };
 

@@ -3,17 +3,17 @@
 const createdbServ = (url, idForm, arrInfo = {}) => {
     const form = document.querySelector(idForm);
     let bool = true;
-    let a;
+    let elemPreload;
 
     const newElem = document.createElement('div');
     newElem.style.color = 'white';
+    newElem.style.margin = '30px';
 
-    const messageLoad = 'Закрузка...';
     const messageCompletLoad = 'Мы отпраили ваши данные, с вами свяжется наш менеджер';
     const messageErrorLoad = 'Ошибка';
 
-    const sendDate = (info) => {
-        return fetch(url, {
+    const sendDate = async (info) => {
+        return await fetch(url, {
             method: 'POST',
 
             body: JSON.stringify(info),
@@ -27,14 +27,33 @@ const createdbServ = (url, idForm, arrInfo = {}) => {
     const submitForm = () => {
         const meanForm = new FormData(form);
         const obj = {};
+        bool = true;
 
         meanForm.forEach((item) => {
             if (item == '') bool = false;
         });
 
         if (bool) {
-            newElem.textContent = messageLoad;
-            form.append(newElem);
+            elemPreload = `
+            <div class="example">
+                <div class="sk-circle-fade">
+                <div class="sk-circle-fade-dot"></div>
+                <div class="sk-circle-fade-dot"></div>
+                <div class="sk-circle-fade-dot"></div>
+                <div class="sk-circle-fade-dot"></div>
+                <div class="sk-circle-fade-dot"></div>
+                <div class="sk-circle-fade-dot"></div>
+                <div class="sk-circle-fade-dot"></div>
+                <div class="sk-circle-fade-dot"></div>
+                <div class="sk-circle-fade-dot"></div>
+                <div class="sk-circle-fade-dot"></div>
+                <div class="sk-circle-fade-dot"></div>
+                <div class="sk-circle-fade-dot"></div>
+                </div>
+            </div>
+            `;
+            form.append(newElem)
+            form.insertAdjacentHTML('beforeend', elemPreload);
 
             meanForm.forEach((val, key) => {
                 obj[key] = val;
@@ -51,10 +70,14 @@ const createdbServ = (url, idForm, arrInfo = {}) => {
             sendDate(obj)
             .then((text) => {
                 console.log(text);
+
+                document.querySelector('.example').remove(elemPreload);
                 newElem.textContent = messageCompletLoad;
             })
             .catch((error) => {
                 console.log(error);
+
+                document.querySelector('.example').remove(elemPreload);
                 newElem.textContent = messageErrorLoad;         
             });
         } else {
@@ -69,7 +92,6 @@ const createdbServ = (url, idForm, arrInfo = {}) => {
 
         form.addEventListener('submit', event => {
             event.preventDefault();
-            bool = true;
     
             submitForm();
         });

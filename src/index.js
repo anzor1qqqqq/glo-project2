@@ -27,4 +27,6 @@ dbServ('https://jsonplaceholder.typicode.com/todos' ,'#form2', {
     text: 'value',
 });
 
-dbServ('https://jsonplaceholder.typicode.com/todos' ,'#form3', {id: 'form2-message'});
+dbServ('https://jsonplaceholder.typicode.com/todos' ,'#form3', {
+    id: 'form2-message',
+});

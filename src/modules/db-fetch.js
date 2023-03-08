@@ -17,13 +17,8 @@ const getDb = () => {
     const getData = () => {
         const fet = fetch('../db.json');
         let save;
-
-        function add(g) {
-            save = g;
-            console.log(save);
-        };
     
-        fet.then((response) => response.json()).then((obj) => add(JSON.stringify(obj))).catch(() => console.log('error'));;
+        fet.then((response) => response.json()).then((obj) => save = JSON.stringify(obj)).catch(() => console.log('error'));;
 
         sendData(save, 'https://jsonplaceholder.typicode.com/posts');
     };

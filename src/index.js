@@ -17,7 +17,7 @@ tabs();
 slider();
 calculated(100);
 
-dbServ('https://jsonplaceholder.typicode.com/todos' ,'#form1', {
+dbServ('.../db.json' ,'#form1', {
     id: 'total',
     text: 'textContent',
 });

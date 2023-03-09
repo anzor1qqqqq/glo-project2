@@ -12,8 +12,8 @@ const createdbServ = (url, idForm, arrInfo = {}) => {
     const messageCompletLoad = 'Мы отпраили ваши данные, с вами свяжется наш менеджер';
     const messageErrorLoad = 'Ошибка';
 
-    const sendDate = async (info) => {
-        return await fetch(url, {
+    const sendDate = (info) => {
+        return fetch(url, {
             method: 'POST',
 
             body: JSON.stringify(info),
